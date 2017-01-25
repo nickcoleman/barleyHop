@@ -24,13 +24,18 @@ class ShowPub extends Component {
           </Title>
           <Card style={styles.cardStyle}>
             <Text style={styles.sectionTitleStyle}>Address:</Text>
-            <Text>{streetAddress}</Text>
-            <Text>{locality}, {region} {postalCode}</Text>
+            <Text style={styles.centerStyle}>{streetAddress}</Text>
+            <Text style={styles.centerStyle}>{locality}, {region} {postalCode}</Text>
             <Button bordered round small info style={styles.buttonStyle}>Map It</Button>
           </Card>
           <Card style={styles.cardStyle}>
+            <Text style={styles.sectionTitleStyle}>Phone Number:</Text>
+            <Text style={styles.centerStyle}>{phone || '<none provided>'}</Text>
+            <Button bordered round small info style={styles.buttonStyle}>Call</Button>
+          </Card>
+          <Card style={styles.cardStyle}>
             <Text style={styles.sectionTitleStyle}>Description:</Text>
-            <Text>{description || '<none provided>'}</Text>
+            <Text >{description || '<none provided>'}</Text>
           </Card>
         </Content>
       </Container>
@@ -53,6 +58,10 @@ styles = {
     marginTop: 10,
     marginBottom: 10,
     width: 200
+  },
+
+  centerStyle: {
+    alignSelf: 'center'
   },
 
   textStyle: {
