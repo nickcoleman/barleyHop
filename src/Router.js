@@ -17,7 +17,7 @@ const RouterComponent = () => {
     <Router sceneStyle={{ paddingTop: 65 }} >
       <Scene key="main">
         <Scene initial key="findPubs" component={FindPubs} title={title} />
-        <Scene key="pubList" component={PubList} title="Brewery And Pub Locations" />
+        <Scene key="pubList" component={PubList} title="Locations" />
         <Scene key="showPub" component={ShowPub} title="Brewery Info" />
         <Scene key="pubMap" component={PubMap} title="Map to Brewery" />
       </Scene>

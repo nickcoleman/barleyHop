@@ -7,7 +7,7 @@ class ListItem extends Component {
   onRowPress() {
     console.log('onRowPress')
     // Actions.showPub()
-    Actions.showPub({brewery: this.props.brewery.brewery})
+    Actions.showPub({location: this.props.brewery})
   }
 
   render() {
