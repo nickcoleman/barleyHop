@@ -50,3 +50,13 @@ export const fetchBreweryLocations = (name = '', location = '') => dispatch => {
     })
     .catch(error => dispatch(fetchBreweryFailure(error)));
 };
+
+const GOOGLE_API_KEY = 'AIzaSyDzk0eKI5tnKWkSORpDTL32iZ15QjxQxeg'
+export const reverseGeoLocLookup = (lat = '40.732287', lon: '-111.8996689') => dispatch => {
+  const url = `https://maps.googleapis.com/maps/api/location/js?key=${GOOGLE_API_KEY}&origin=${lat},${lon}`
+  const url2 = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=Seattle&destinations=San+Francisco&key=${GOOGLE_API_KEY}`
+  fetch(url2)
+    // .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error =>console.log('Error: ', error))
+}

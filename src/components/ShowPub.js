@@ -14,14 +14,16 @@ class ShowPub extends Component {
       phone, streetAddress, locality, region, postalCode
     } = this.props.location
     const {
-      id, established, name, description, website, images
+      id, established, name, description, website, images,
     } = brewery
     return (
       <Container>
         <Content>
-          <Title>
-            {name}
-          </Title>
+          <Card style={styles.headerTitleStyle}>
+            <Title>
+              {name}
+            </Title>
+          </Card>
           <Card style={styles.cardStyle}>
             <Text style={styles.sectionTitleStyle}>Address:</Text>
             <Text style={styles.centerStyle}>{streetAddress}</Text>
@@ -34,8 +36,13 @@ class ShowPub extends Component {
             <Button bordered round small info style={styles.buttonStyle}>Call</Button>
           </Card>
           <Card style={styles.cardStyle}>
-            <Text style={styles.sectionTitleStyle}>Description:</Text>
-            <Text >{description || '<none provided>'}</Text>
+            <Text style={styles.sectionTitleStyle}>Website:</Text>
+            <Text style={styles.centerStyle}>{website || '<none provided>'}</Text>
+          </Card>
+          <Card style={styles.cardStyle}>
+            <Text style={styles.sectionTitleStyle}>More Info:</Text>
+            <Text>Established: {established  || ''}</Text>
+            <Text >Description: {description || '<none provided>'}</Text>
           </Card>
         </Content>
       </Container>
@@ -44,9 +51,16 @@ class ShowPub extends Component {
 }
 
 styles = {
+  headerTitleStyle: {
+    paddingTop:10,
+    paddingBottom: 10
+  },
+
   cardStyle: {
     paddingLeft: 20,
-    paddingRight: 20
+    paddingRight: 20,
+    paddingBottom: 10,
+    paddingTop: 10,
   },
 
   sectionTitleStyle: {

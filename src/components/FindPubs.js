@@ -2,24 +2,47 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import {
   Container, Content, Button,
-  Input, Icon, Item, Title
+  Input, Icon, Item, Title, Thumbnail,
 } from 'native-base';
-import { Picker, View, Text } from 'react-native'
+import { Image, View, Text } from 'react-native'
 
 import {
   inputUpdate,
-  fetchBreweryLocations
+  fetchBreweryLocations,
+  reverseGeoLocLookup
 } from '../actions'
 
 class FindPubs extends Component {
+
+  state = {
+    initialPosition: {},
+    lastPosition: ''
+  }
 
   onSearchButtonPress() {
     this.props.fetchBreweryLocations(this.props.pubChoice, this.props.locationChoice)
   }
 
-  render() {
-    return (
+  onCurrentLocationButtonPress() {
+    console.log('Find current location')
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        // console.log(position)
+        // let initialPosition = JSON.stringify(position);
+        let initialPosition = position.coords;
+        this.setState({initialPosition});
+      },
+      (error) => alert(JSON.stringify(error)),
+      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+    );
+    // this.props.reverseGeoLocLookup()
+    console.log(`Current Position: ${this.state.initialPosition}`)
+  }
 
+  render() {
+    // <Text>{this.state.initialPosition}</Text>
+    const barleylogo = require('./img/hops_and_barley.png')
+    return (
       <Container>
       <Content>
         <Title sytle={styles.titleStyle}>Brewery And Pub Locations </Title>
@@ -32,7 +55,11 @@ class FindPubs extends Component {
           onChangeText={value => this.props.inputUpdate({ prop: 'pubChoice', value })}
         />
 
-        <Button bordered rounded small style={styles.buttonStyle} >
+        <Button
+          bordered rounded small
+          style={styles.buttonStyle}
+          onPress={this.onCurrentLocationButtonPress.bind(this)}
+        >
           Use Current Location
         </Button>
 
@@ -54,7 +81,7 @@ class FindPubs extends Component {
         >
           Search
         </Button>
-
+        <Thumbnail source={barleylogo} style={styles.imageStyle} />
       </Content>
 
       </Container>
@@ -67,6 +94,7 @@ const styles = {
   titleStyle: {
     marginTop: 30
   },
+
   textStyle: {
     alignSelf: 'center',
     marginTop: 10,
@@ -87,6 +115,7 @@ const styles = {
     paddingTop: 10,
     backgroundColor: '#fff'
   },
+
   container: {
     position: 'absolute',
     top: 0,
@@ -95,6 +124,13 @@ const styles = {
     bottom: 0,
     justifyContent: 'flex-end',
     alignItems: 'center',
+  },
+
+  imageStyle: {
+    marginTop: 30,
+    width: 300,
+    height: 125,
+    alignSelf: 'center',
   }
 }
 
@@ -105,5 +141,6 @@ const mapStatetoProps = (state) => {
 
 export default connect(mapStatetoProps, {
   inputUpdate,
-  fetchBreweryLocations
+  fetchBreweryLocations,
+  reverseGeoLocLookup
 })(FindPubs)
