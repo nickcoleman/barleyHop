@@ -30,7 +30,7 @@ class ShowPub extends Component {
           </Card>
           <Card style={styles.cardStyle}>
             <Text style={styles.sectionTitleStyle}>Description:</Text>
-            <Text>{description}</Text>
+            <Text>{description || '<none provided>'}</Text>
           </Card>
         </Content>
       </Container>
