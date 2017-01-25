@@ -9,7 +9,7 @@ import { View, Dimensions, StyleSheet } from 'react-native'
 
 
 
-class PubList extends Component {
+class PubMap extends Component {
 
   render() {
     console.log(this.props.brewery[0])
@@ -18,13 +18,13 @@ class PubList extends Component {
     return (
       <View style={styles.container} >
           <MapView
+            style={styles.map}
             initialRegion={{
               latitude: 40.6417724,
               longitude: -111.4946778,
               latitudeDelta: 0.0922,
               longitudeDelta: 0.0421,
             }}
-            style={styles.map}
           />
       </View>
     )
@@ -75,4 +75,4 @@ const mapStatetoProps = state => {
   return { brewery }
 }
 
-export default connect(mapStatetoProps)(PubList)
+export default connect(mapStatetoProps)(PubMap)

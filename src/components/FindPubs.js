@@ -29,14 +29,14 @@ class FindPubs extends Component {
       (position) => {
         // console.log(position)
         // let initialPosition = JSON.stringify(position);
-        let initialPosition = position.coords;
+        let initialPosition = position;
         this.setState({initialPosition});
       },
       (error) => alert(JSON.stringify(error)),
       {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
     );
-    // this.props.reverseGeoLocLookup()
-    console.log(`Current Position: ${this.state.initialPosition}`)
+    this.props.reverseGeoLocLookup()
+    // console.log(`Current Position: ${this.state.initialPosition}`)
   }
 
   render() {

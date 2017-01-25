@@ -45,6 +45,7 @@ export const fetchBreweryLocations = (name = '', location = '') => dispatch => {
         dispatch(fetchBreweryFailure(data.errorMessage))
       } else {
         Actions.pubList()
+        console.log('fetchBreweryLocations data: ', data)
         dispatch(fetchBreweryLocationsSuccess(data))
       }
     })
@@ -53,8 +54,8 @@ export const fetchBreweryLocations = (name = '', location = '') => dispatch => {
 
 const GOOGLE_API_KEY = 'AIzaSyDzk0eKI5tnKWkSORpDTL32iZ15QjxQxeg'
 export const reverseGeoLocLookup = (lat = '40.732287', lon: '-111.8996689') => dispatch => {
-  const url = `https://maps.googleapis.com/maps/api/location/js?key=${GOOGLE_API_KEY}&origin=${lat},${lon}`
-  const url2 = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=Seattle&destinations=San+Francisco&key=${GOOGLE_API_KEY}`
+  const url = `http://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&sensor=true&key=${GOOGLE_API_KEY}`
+  const url2 = `http://maps.googleapis.com/maps/api/geocode/json?latlng=40.64177,-111.4946&key=${GOOGLE_API_KEY}`
   fetch(url2)
     // .then(response => response.json())
     .then(data => console.log(data))

@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Text } from 'react-native'
+import { Text, Linking } from 'react-native'
 import {
   Button, Container, Content, Card,
   Thumbnail, Title,
 } from 'native-base'
 
+// Linking.openURL(url)
 class ShowPub extends Component {
   render() {
     console.log(this.props.location)
@@ -13,9 +14,14 @@ class ShowPub extends Component {
       brewery, breweryId, lattitude, longitude, locationTypeDisplay, yearOpened,
       phone, streetAddress, locality, region, postalCode
     } = this.props.location
+    let medium = '';
+    if ( brewery.images !== undefined) {
+      medium = brewery.images.medium
+    }
     const {
-      id, established, name, description, website, images,
+      id, established, name, description, website,
     } = brewery
+
     return (
       <Container>
         <Content>
@@ -41,8 +47,12 @@ class ShowPub extends Component {
           </Card>
           <Card style={styles.cardStyle}>
             <Text style={styles.sectionTitleStyle}>More Info:</Text>
+            <Thumbnail source={{uri: medium}} style={styles.imageStyle} />
             <Text>Established: {established  || ''}</Text>
-            <Text >Description: {description || '<none provided>'}</Text>
+            <Text >
+              <Text style={{color: 'blue'}}>Description:</Text>
+              {description || '<none provided>'}
+            </Text>
           </Card>
         </Content>
       </Container>
@@ -81,6 +91,13 @@ styles = {
   textStyle: {
     paddingLeft: 20,
     paddingRight: 20
+  },
+
+  imageStyle: {
+    marginTop: 30,
+    width: 300,
+    height: 125,
+    alignSelf: 'center',
   }
 };
 
