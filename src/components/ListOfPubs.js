@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { Text, TouchableWithoutFeedback, View } from 'react-native';
-// import { Actions } from 'react-native-router-flux'
+import { Actions } from 'react-native-router-flux'
 import { CardSection } from './common';
 
 class ListItem extends Component {
   onRowPress() {
     console.log('onRowPress')
     // Actions.showPub()
-    // Actions.showPub(brewery: this.props.brewery.brewery)
+    Actions.showPub({brewery: this.props.brewery.brewery})
   }
 
   render() {
-    console.log(this.props.brewery.brewery)
+    // console.log(this.props.brewery.brewery)
     const { name } = this.props.brewery.brewery;
     return (
       <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>

@@ -4,7 +4,7 @@ import { Text, View } from 'react-native'
 
 class ShowPub extends Component {
   render() {
-    // console.log(this.props.brewery)
+    console.log(this.props.brewery)
     // const {name, description, id } = this.props.brewery
     return (
       <View>
