@@ -37,7 +37,7 @@ class PubList extends Component {
   render() {
     // console.log(this.props.brewery)
     return (
-      <Container>
+      <Container style={styles.containerStyle}>
         <Content>
           <Button
             bordered rounded small
@@ -58,6 +58,11 @@ class PubList extends Component {
 }
 
 const styles = {
+
+  containerStyle: {
+    backgroundColor: '#ffffcc'
+  },
+
   buttonStyle: {
     alignSelf: 'center',
     marginTop: 10,

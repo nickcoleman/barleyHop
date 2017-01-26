@@ -5,9 +5,28 @@ import {
   Button, Container, Content, Card,
   Thumbnail, Title,
 } from 'native-base'
+import Communications from 'react-native-communications'
 
-// Linking.openURL(url)
 class ShowPub extends Component {
+
+  handleMapClick = (name, longitude, lattitude) => {
+    Linking.openURL(`http://maps.apple.com/?q=${name}&ll=${longitude},${lattitude}&z=10`)
+  }
+
+  handleLinkClick = (website) => {
+    Linking.canOpenURL(website).then(supported => {
+      if (supported) {
+        Linking.openURL(website);
+      } else {
+        console.log('Don\'t know how to open URI: ' + website);
+      }
+    });
+  };
+
+  handlePhoneClick = (phone) => {
+    Communications.phonecall(phone, true)
+  }
+
   render() {
     console.log(this.props.location)
     const {
@@ -23,34 +42,45 @@ class ShowPub extends Component {
     } = brewery
 
     return (
-      <Container>
+      <Container style={styles.containerStyle}>
         <Content>
-          <Card style={styles.headerTitleStyle}>
-            <Title>
+            <Title style={styles.headerTitleStyle}>
               {name}
             </Title>
-          </Card>
           <Card style={styles.cardStyle}>
             <Text style={styles.sectionTitleStyle}>Address:</Text>
             <Text style={styles.centerStyle}>{streetAddress}</Text>
             <Text style={styles.centerStyle}>{locality}, {region} {postalCode}</Text>
-            <Button bordered round small info style={styles.buttonStyle}>Map It</Button>
+            <Button
+              bordered round small info
+              style={styles.buttonStyle}
+              onPress={() => this.handleMapClick(name, longitude,lattitude)}
+            >
+              Map It
+            </Button>
           </Card>
           <Card style={styles.cardStyle}>
             <Text style={styles.sectionTitleStyle}>Phone Number:</Text>
             <Text style={styles.centerStyle}>{phone || '<none provided>'}</Text>
-            <Button bordered round small info style={styles.buttonStyle}>Call</Button>
+            <Button
+              bordered round small info
+              style={styles.buttonStyle}
+               onPress={() => this.handlePhoneClick(phone)}
+            >Call</Button>
           </Card>
           <Card style={styles.cardStyle}>
             <Text style={styles.sectionTitleStyle}>Website:</Text>
-            <Text style={styles.centerStyle}>{website || '<none provided>'}</Text>
+            <Text style={styles.centerStyle} onPress={() => this.handleLinkClick(website)}>{website || '<none provided>'}</Text>
           </Card>
           <Card style={styles.cardStyle}>
             <Text style={styles.sectionTitleStyle}>More Info:</Text>
             <Thumbnail source={{uri: medium}} style={styles.imageStyle} />
-            <Text>Established: {established  || ''}</Text>
-            <Text >
-              <Text style={{color: 'blue'}}>Description:</Text>
+            <Text style={styles.textInfoStyle}>
+              <Text style={{color: 'blue'}}>Established: </Text>
+              {established  || 'unknown'}
+            </Text>
+            <Text style={styles.textInfoStyle}>
+              <Text style={{color: 'blue'}}>Description: </Text>
               {description || '<none provided>'}
             </Text>
           </Card>
@@ -59,8 +89,14 @@ class ShowPub extends Component {
     )
   }
 }
+// Linking.openURL(url)
 
 styles = {
+
+  containerStyle: {
+    backgroundColor: '#ffffcc'
+  },
+
   headerTitleStyle: {
     paddingTop:10,
     paddingBottom: 10
@@ -71,6 +107,7 @@ styles = {
     paddingRight: 20,
     paddingBottom: 10,
     paddingTop: 10,
+    backgroundColor: '#ffffe6'
   },
 
   sectionTitleStyle: {
@@ -81,16 +118,22 @@ styles = {
     alignSelf: 'center',
     marginTop: 10,
     marginBottom: 10,
-    width: 200
+    width: 200,
+    backgroundColor: '#ffff99'
   },
 
   centerStyle: {
-    alignSelf: 'center'
+    alignSelf: 'center',
+    marginTop: 10
   },
 
   textStyle: {
     paddingLeft: 20,
     paddingRight: 20
+  },
+
+  textInfoStyle: {
+    marginTop: 10
   },
 
   imageStyle: {

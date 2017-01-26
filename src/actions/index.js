@@ -35,21 +35,38 @@ export const fetchBreweryFailure = error => ({
   payload: error
 })
 
-export const fetchBreweryLocations = (name = '', location = '') => dispatch => {
+export const fetchBreweryLocations = (location = 'Denver') => dispatch => {
   const url = `${BREWDB_BASE_URL}/locations/?key=${BREWDB_API_KEY}&locality=${location}`
   fetch(url)
     .then(response => response.json())
     .then(data => {
       if (data.errorMessage) {
         console.log(data.errorMessage)
-        dispatch(fetchBreweryFailure(data.errorMessage))
+        dispatch(fetchBreweryFailure('fetchBreweryFailure: ', data.errorMessage))
       } else {
         Actions.pubList()
         console.log('fetchBreweryLocations data: ', data)
         dispatch(fetchBreweryLocationsSuccess(data))
       }
     })
-    .catch(error => dispatch(fetchBreweryFailure(error)));
+    .catch(error => dispatch(fetchBreweryFailure('fetchBreweryFailure: ', error)));
+};
+
+export const fetchBreweryLocation = (name = '', location = '') => dispatch => {
+  const url = `${BREWDB_BASE_URL}/location/?key=${BREWDB_API_KEY}&locality=${location}&name=${name}`
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      if (data.errorMessage) {
+        console.log(data.errorMessage)
+        dispatch(fetchBreweryFailure('fetchBreweryFailure: ', data.errorMessage))
+      } else {
+        Actions.pubList()
+        console.log('fetchBreweryLocations data: ', data)
+        dispatch(fetchBreweryLocationsSuccess(data))
+      }
+    })
+    .catch(error => dispatch(fetchBreweryFailure('fetchBreweryFailure: ', error)));
 };
 
 const GOOGLE_API_KEY = 'AIzaSyDzk0eKI5tnKWkSORpDTL32iZ15QjxQxeg'

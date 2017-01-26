@@ -15,7 +15,7 @@ class ListItem extends Component {
     const { name } = this.props.brewery.brewery;
     return (
       <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
-        <View>
+        <View style={styles.sectionStyle}>
           <CardSection>
             <Text style={styles.titleStyle}>
               {name}
@@ -28,6 +28,10 @@ class ListItem extends Component {
 }
 
 const styles = {
+  sectionStyle: {
+    backgroundColor: '#ffffcc'
+  },
+
   titleStyle: {
     fontSize: 18,
     paddingLeft: 15
