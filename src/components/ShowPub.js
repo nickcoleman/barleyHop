@@ -5,7 +5,7 @@ import {
   Button, Container, Content, Card,
   Thumbnail, Title,
 } from 'native-base'
-import Communications from 'react-native-communications'
+// import Communications from 'react-native-communications'
 
 class ShowPub extends Component {
 
@@ -24,7 +24,8 @@ class ShowPub extends Component {
   };
 
   handlePhoneClick = (phone) => {
-    Communications.phonecall(phone, true)
+    // Communications.phonecall(phone, true)
+    console.log('handlePhoneClick')
   }
 
   render() {
@@ -52,7 +53,7 @@ class ShowPub extends Component {
             <Text style={styles.centerStyle}>{streetAddress}</Text>
             <Text style={styles.centerStyle}>{locality}, {region} {postalCode}</Text>
             <Button
-              bordered round small info
+              bordered round small warning
               style={styles.buttonStyle}
               onPress={() => this.handleMapClick(name, longitude,lattitude)}
             >
@@ -63,24 +64,27 @@ class ShowPub extends Component {
             <Text style={styles.sectionTitleStyle}>Phone Number:</Text>
             <Text style={styles.centerStyle}>{phone || '<none provided>'}</Text>
             <Button
-              bordered round small info
+              bordered round small warning
               style={styles.buttonStyle}
                onPress={() => this.handlePhoneClick(phone)}
             >Call</Button>
           </Card>
+
           <Card style={styles.cardStyle}>
             <Text style={styles.sectionTitleStyle}>Website:</Text>
             <Text style={styles.centerStyle} onPress={() => this.handleLinkClick(website)}>{website || '<none provided>'}</Text>
           </Card>
+
           <Card style={styles.cardStyle}>
             <Text style={styles.sectionTitleStyle}>More Info:</Text>
             <Thumbnail source={{uri: medium}} style={styles.imageStyle} />
             <Text style={styles.textInfoStyle}>
-              <Text style={{color: 'blue'}}>Established: </Text>
+              <Text style={{color: '#cc7a00'}}>Established: </Text>
               {established  || 'unknown'}
             </Text>
+
             <Text style={styles.textInfoStyle}>
-              <Text style={{color: 'blue'}}>Description: </Text>
+              <Text style={{color: '#cc7a00'}}>Description: </Text>
               {description || '<none provided>'}
             </Text>
           </Card>
@@ -94,7 +98,7 @@ class ShowPub extends Component {
 styles = {
 
   containerStyle: {
-    backgroundColor: '#ffffcc'
+    backgroundColor: '#ffcc80'
   },
 
   headerTitleStyle: {
@@ -107,7 +111,7 @@ styles = {
     paddingRight: 20,
     paddingBottom: 10,
     paddingTop: 10,
-    backgroundColor: '#ffffe6'
+    backgroundColor: '#ffe0b3'
   },
 
   sectionTitleStyle: {
@@ -119,7 +123,7 @@ styles = {
     marginTop: 10,
     marginBottom: 10,
     width: 200,
-    backgroundColor: '#ffff99'
+    backgroundColor: '#fff5e6'
   },
 
   centerStyle: {

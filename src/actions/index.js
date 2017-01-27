@@ -1,6 +1,6 @@
 import { Actions } from 'react-native-router-flux'
 import axios from 'axios'
-import 'isomorphic-fetch'
+import 'whatwg-fetch'
 
 
 /********************************************************

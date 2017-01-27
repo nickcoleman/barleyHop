@@ -38,27 +38,29 @@ class FindPubs extends Component {
     navigator.geolocation.getCurrentPosition(
       (position) => {
         // console.log(position)
-        // let initialPosition = JSON.stringify(position);
-        let initialPosition = position;
+        let initialPosition = JSON.stringify(position);
+        // let initialPosition = position;
+        console.log(initialPosition)
         this.setState({initialPosition});
       },
       (error) => alert(JSON.stringify(error)),
       {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
     );
     this.props.reverseGeoLocLookup()
-    // console.log(`Current Position: ${this.state.initialPosition}`)
+    console.log(`Current Position: ${this.state.initialPosition}`)
   }
 
   render() {
     // <Text>{this.state.initialPosition}</Text>
     const barleylogo = require('./img/hops_and_barley.png')
     const hopIcon = require('./img/barley-icon.png')
+    const beerRabbit = require('./img/beerRabbit.png')
     return (
       <Container style={styles.containerStyle}>
       <Content>
+        <Thumbnail source={beerRabbit} style={styles.rabbitStyle} />
         <Title sytle={styles.titleStyle}>Brewery And Pub Locations </Title>
 
-        <Thumbnail source={barleylogo} style={styles.imageStyle} />
 
           <Input
             style={styles.inputStyle}
@@ -71,7 +73,7 @@ class FindPubs extends Component {
 
 
         <Button
-          rounded
+          rounded warning
           style={styles.buttonSearchStyle}
           onPress={this.onSearchButtonPress.bind(this)}
           >
@@ -80,12 +82,13 @@ class FindPubs extends Component {
 
         <Text style={styles.textStyle}><Thumbnail source={hopIcon} style={styles.iconStyle} /></Text>
         <Button
-          bordered rounded small
+          bordered rounded small warning
           style={styles.buttonStyle}
           onPress={this.onCurrentLocationButtonPress.bind(this)}
           >
           Or Use Current Location
         </Button>
+        <Thumbnail source={barleylogo} style={styles.imageStyle} />
       </Content>
 
       </Container>
@@ -97,7 +100,7 @@ class FindPubs extends Component {
 const styles = {
 
   containerStyle: {
-    backgroundColor: '#ffffcc'
+    backgroundColor: '#ffcc80'
   },
 
   titleStyle: {
@@ -115,7 +118,7 @@ const styles = {
     marginTop: 10,
     marginBottom: 10,
     width: 200,
-    backgroundColor: '#ffffe6'
+    backgroundColor: '#fff5e6'
   },
 
   buttonSearchStyle: {
@@ -133,7 +136,7 @@ const styles = {
     paddingBottom: 10,
     paddingTop: 10,
     marginTop: 20,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#fff5e6',
     width: 300
   },
 
@@ -158,6 +161,14 @@ const styles = {
     width: 50,
     height: 50,
     alignSelf: 'center',
+  },
+
+  rabbitStyle: {
+    width: 200,
+    height: 200,
+    marginTop: 10,
+    marginBottom: 10,
+    alignSelf: 'center'
   }
 }
 

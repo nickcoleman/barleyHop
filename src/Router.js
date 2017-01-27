@@ -12,9 +12,9 @@ import ShowPub from './components/ShowPub'
 import PubMap from './components/PubMap'
 
 const RouterComponent = () => {
-  const title = 'Barley & Hops'
+  const title = 'Barley Hopper'
   return (
-    <Router sceneStyle={{ paddingTop: 65 }} >
+    <Router sceneStyle={{paddingTop: 65}} >
       <Scene key="main">
         <Scene initial key="findPubs" component={FindPubs} title={title} />
         <Scene key="pubList" component={PubList} title="Locations" />

@@ -40,7 +40,7 @@ class PubList extends Component {
       <Container style={styles.containerStyle}>
         <Content>
           <Button
-            bordered rounded small
+            bordered rounded small warning
             style={styles.buttonStyle}
             onPress={this.onMapButtonPress.bind(this)}
           >
@@ -60,14 +60,19 @@ class PubList extends Component {
 const styles = {
 
   containerStyle: {
-    backgroundColor: '#ffffcc'
+    backgroundColor: '#ffcc80'
   },
 
   buttonStyle: {
     alignSelf: 'center',
     marginTop: 10,
     marginBottom: 10,
-    width: 300
+    width: 300,
+    backgroundColor: '#fff5e6'
+  },
+
+  listViewStyle: {
+    backgroundColor: '#fff5e6'
   }
 }
 
