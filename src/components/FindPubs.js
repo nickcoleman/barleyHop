@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import _ from 'lodash'
 import { connect } from 'react-redux'
 import {
   Card, Container, Content, Button,
@@ -17,7 +18,8 @@ class FindPubs extends Component {
 
   state = {
     initialPosition: {},
-    lastPosition: ''
+    lastPosition: '',
+    coords: {}
   }
 
   onSearchButtonPress() {
@@ -33,25 +35,31 @@ class FindPubs extends Component {
     }
   }
 
+
   onCurrentLocationButtonPress() {
     console.log('Find current location')
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        // console.log(position)
-        let initialPosition = JSON.stringify(position);
-        // let initialPosition = position;
-        console.log(initialPosition)
+        // let initialPosition = JSON.stringify(position);
+        let initialPosition = position;
         this.setState({initialPosition});
       },
       (error) => alert(JSON.stringify(error)),
       {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
     );
-    this.props.reverseGeoLocLookup()
-    console.log(`Current Position: ${this.state.initialPosition}`)
+    // this.props.reverseGeoLocLookup()
+    // console.log('Current Position:', this.state.initialPosition)
+    console.log('coords', this.state.initialPosition.coords)
   }
 
+  // extractCoords() {
+  //   _.each(this.state.initialPosition.coords, (value, prop) => {
+  //     this.setState(coords({prop, value}))
+  //   })
+  //   console.log('state coords: ', this.state.coords)
+  // }
+
   render() {
-    // <Text>{this.state.initialPosition}</Text>
     const barleylogo = require('./img/hops_and_barley.png')
     const hopIcon = require('./img/barley-icon.png')
     const beerRabbit = require('./img/beerRabbit.png')
@@ -80,14 +88,6 @@ class FindPubs extends Component {
           Search
         </Button>
 
-        <Text style={styles.textStyle}><Thumbnail source={hopIcon} style={styles.iconStyle} /></Text>
-        <Button
-          bordered rounded small warning
-          style={styles.buttonStyle}
-          onPress={this.onCurrentLocationButtonPress.bind(this)}
-          >
-          Or Use Current Location
-        </Button>
         <Thumbnail source={barleylogo} style={styles.imageStyle} />
       </Content>
 
@@ -97,6 +97,14 @@ class FindPubs extends Component {
   }
 }
 
+// <Text style={styles.textStyle}><Thumbnail source={hopIcon} style={styles.iconStyle} /></Text>
+// <Button
+//   bordered rounded small warning
+//   style={styles.buttonStyle}
+//   onPress={this.onCurrentLocationButtonPress.bind(this)}
+//   >
+//   Or Use Current Location
+// </Button>
 const styles = {
 
   containerStyle: {

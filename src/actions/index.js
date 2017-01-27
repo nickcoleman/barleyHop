@@ -73,8 +73,8 @@ const GOOGLE_API_KEY = 'AIzaSyDzk0eKI5tnKWkSORpDTL32iZ15QjxQxeg'
 export const reverseGeoLocLookup = (lat = '40.732287', lon: '-111.8996689') => dispatch => {
   const url = `http://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lon}&sensor=true&key=${GOOGLE_API_KEY}`
   const url2 = `http://maps.googleapis.com/maps/api/geocode/json?latlng=40.64177,-111.4946&key=${GOOGLE_API_KEY}`
-  fetch(url2)
-    // .then(response => response.json())
-    .then(data => console.log(data))
-    .catch(error =>console.log('Error: ', error))
+  axios.get(url)
+    .then(response => response.json())
+    .then(data => console.log('reverseGeoLocLookup data: ', data))
+    .catch(error =>console.log('reverseGeoLocLookup Error: ', error))
 }
