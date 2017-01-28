@@ -16,11 +16,11 @@ import {
 
 class FindPubs extends Component {
 
-  state = {
-    initialPosition: {},
-    lastPosition: '',
-    coords: {}
-  }
+  // state = {
+  //   initialPosition: {},
+  //   lastPosition: '',
+  //   coords: {}
+  // }
 
   onSearchButtonPress() {
     if (!this.props.locationChoice) {
@@ -37,27 +37,22 @@ class FindPubs extends Component {
 
 
   onCurrentLocationButtonPress() {
-    console.log('Find current location')
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        // let initialPosition = JSON.stringify(position);
-        let initialPosition = position;
-        this.setState({initialPosition});
-      },
-      (error) => alert(JSON.stringify(error)),
-      {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
-    );
-    // this.props.reverseGeoLocLookup()
-    // console.log('Current Position:', this.state.initialPosition)
-    console.log('coords', this.state.initialPosition.coords)
+    console.log('onCurrentLocationButtonPress')
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          let latitude = position.coords.latitude
+          let longitude = position.coords.longitude
+          console.log('lat-lon: ', latitude, ',', longitude)
+          this.props.reverseGeoLocLookup(latitude, longitude)
+        },
+        (error) => alert(JSON.stringify(error)),
+        {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+      );
+    } else {
+      console.log('navigator.geolocation failed')
+    }
   }
-
-  // extractCoords() {
-  //   _.each(this.state.initialPosition.coords, (value, prop) => {
-  //     this.setState(coords({prop, value}))
-  //   })
-  //   console.log('state coords: ', this.state.coords)
-  // }
 
   render() {
     const barleylogo = require('./img/hops_and_barley.png')
@@ -88,6 +83,15 @@ class FindPubs extends Component {
           Search
         </Button>
 
+        <Text style={styles.textStyle}><Thumbnail source={hopIcon} style={styles.iconStyle} /></Text>
+        <Button
+          bordered rounded small warning
+          style={styles.buttonStyle}
+          onPress={this.onCurrentLocationButtonPress.bind(this)}
+          >
+          Or Use Current Location
+        </Button>
+
         <Thumbnail source={barleylogo} style={styles.imageStyle} />
       </Content>
 
@@ -97,14 +101,6 @@ class FindPubs extends Component {
   }
 }
 
-// <Text style={styles.textStyle}><Thumbnail source={hopIcon} style={styles.iconStyle} /></Text>
-// <Button
-//   bordered rounded small warning
-//   style={styles.buttonStyle}
-//   onPress={this.onCurrentLocationButtonPress.bind(this)}
-//   >
-//   Or Use Current Location
-// </Button>
 const styles = {
 
   containerStyle: {

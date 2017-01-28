@@ -5,7 +5,7 @@ import {
   Button, Container, Content, Card,
   Thumbnail, Title,
 } from 'native-base'
-// import Communications from 'react-native-communications'
+import Communications from 'react-native-communications'
 
 class ShowPub extends Component {
 
@@ -24,8 +24,8 @@ class ShowPub extends Component {
   };
 
   handlePhoneClick = (phone) => {
-    // Communications.phonecall(phone, true)
-    console.log('handlePhoneClick')
+    Communications.phonecall(phone, true)
+    console.log('Phone Call Simulated')
   }
 
   render() {
@@ -78,9 +78,15 @@ class ShowPub extends Component {
           <Card style={styles.cardStyle}>
             <Text style={styles.sectionTitleStyle}>More Info:</Text>
             <Thumbnail source={{uri: medium}} style={styles.imageStyle} />
+
             <Text style={styles.textInfoStyle}>
               <Text style={{color: '#cc7a00'}}>Established: </Text>
               {established  || 'unknown'}
+            </Text>
+
+            <Text style={styles.textInfoStyle}>
+              <Text style={{color: '#cc7a00'}}>Type: </Text>
+              {locationTypeDisplay  || 'Pub'}
             </Text>
 
             <Text style={styles.textInfoStyle}>
@@ -145,6 +151,7 @@ styles = {
     width: 300,
     height: 125,
     alignSelf: 'center',
+    backgroundColor: '#ffe0b3'
   }
 };
 

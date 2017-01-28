@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -43,6 +44,7 @@
 		C37192DAF119427FB73555D2 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 165673DAAA664224A0E70E52 /* FontAwesome.ttf */; };
 		CDB2A5A0EF0B4A83B04B0128 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 886111C406C1443C89726C3D /* SimpleLineIcons.ttf */; };
 		DC987C6640CB4F419D361C88 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EFFD75D3208E4FBD84BDBB82 /* MaterialIcons.ttf */; };
+		E73DE4411E3B61800031C3C6 /* parkcity.gpx in Resources */ = {isa = PBXBuildFile; fileRef = E73DE4401E3B61800031C3C6 /* parkcity.gpx */; };
 		E8B3BD33657D41C1A97ACDEB /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B0DAA3B41D124F9DB205A1FB /* Roboto.ttf */; };
 		F2E66002086D45F38D2AB4DA /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3185B4BCD2E442C28E2F2BB9 /* EvilIcons.ttf */; };
 		F5B723F00CF04A9694EBB5F4 /* Microsoft Sans Serif.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83E57047AE0348DB85A3F657 /* Microsoft Sans Serif.ttf */; };
@@ -285,6 +287,7 @@
 		C53A0AF85B5647BA8AE94158 /* Georgia.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Georgia.ttf; path = "../node_modules/native-base/Fonts/Georgia.ttf"; sourceTree = "<group>"; };
 		CCAFA955E4E041319A75D1F8 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		DDA002185AC04B289EDD6E6A /* Andale Mono.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Andale Mono.ttf"; path = "../node_modules/native-base/Fonts/Andale Mono.ttf"; sourceTree = "<group>"; };
+		E73DE4401E3B61800031C3C6 /* parkcity.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = parkcity.gpx; path = "../../../../Fun Gifs/parkcity.gpx"; sourceTree = "<group>"; };
 		EFFD75D3208E4FBD84BDBB82 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		FE8FF9E3BF6A466A8A05B8FF /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -475,6 +478,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				E73DE4401E3B61800031C3C6 /* parkcity.gpx */,
 				13B07FAE1A68108700A75B9A /* barleyHop */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* barleyHopTests */,
@@ -851,6 +855,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E73DE4411E3B61800031C3C6 /* parkcity.gpx in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				790BCAFDC86547AA8CE9D921 /* Andale Mono.ttf in Resources */,

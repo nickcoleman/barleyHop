@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import MapView from 'react-native-maps'
-import { View, Dimensions, StyleSheet } from 'react-native'
+import { View, Dimensions, StyleSheet, Text } from 'react-native'
 // import {
 //   Container, Content, Button,
 //   Input, Icon, Item, Title
@@ -15,16 +15,19 @@ class PubMap extends Component {
     console.log(this.props.brewery[0])
     const lat = this.props.brewery[0].latitude
     const lon = this.props.brewery[0].longitude
+    const region = {
+      latitude: 40.6417724,
+      longitude: -111.4946778,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
+    }
+
     return (
       <View style={styles.container} >
+        <Text>Map View</Text>
           <MapView
             style={styles.map}
-            initialRegion={{
-              latitude: 40.6417724,
-              longitude: -111.4946778,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
-            }}
+            region={region}
           />
       </View>
     )
