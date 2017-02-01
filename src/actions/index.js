@@ -17,9 +17,7 @@ export const inputUpdate = ({ prop, value }) => ({
            Brewery Actions
 *********************************************************/
 
-const BEERMAP_API_KEY = '1586428906314affc5ad8d0f0328def9'
-
-// www.brewerydb/developers/docs
+// http://www.brewerydb/developers/docs
 const BREWDB_API_KEY = '84b266032fc3574cc3c27babc2b0de54'
 const BREWDB_BASE_URL = 'https://api.brewerydb.com/v2'
 
