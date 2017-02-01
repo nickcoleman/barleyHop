@@ -5,7 +5,7 @@
 "Beer ... is there anything it can't do" - *Homer Simpson*
 
 Mobile React-Native Application.
-Allows users to by breweries and pubs by either their geo-location or by manually entering a location.
+Allows users to search for breweries and pubs by either their geo-location or by manually entering a location.
 
 ## Sample Scenes
 ![Main Scene](http://res.cloudinary.com/coleman/image/upload/v1485978908/MainScreen_aucrzw.png)
