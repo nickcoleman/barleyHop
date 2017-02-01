@@ -9,8 +9,11 @@ Allows users to by breweries and pubs by either their geo-location or by manuall
 
 ## Sample Scenes
 ![Main Scene](http://res.cloudinary.com/coleman/image/upload/v1485978908/MainScreen_aucrzw.png)
+
 ![Brewery/Pub Listings](http://res.cloudinary.com/coleman/image/upload/v1485978907/PubListings_oj6rq0.png)
+
 ![Individual Brewery/Pub Info](http://res.cloudinary.com/coleman/image/upload/v1485978908/PubInfo1_utnccr.png)
+
 ![Brewery/Publ Map](http://res.cloudinary.com/coleman/image/upload/v1485978908/PubMapping_rj6nha.png)
 
 ## Fameworks, Packages, and APIs
