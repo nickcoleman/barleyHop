@@ -4,7 +4,7 @@ import { Actions } from 'react-native-router-flux'
 import {
   Container, Content, Button,
   Input, Icon, Item, Title
-} from 'native-base';
+} from 'native-base'
 import { ListView } from 'react-native'
 import ListOfPubs from './ListOfPubs'
 
@@ -27,7 +27,7 @@ class PubList extends Component {
       rowHasChanged: (r1, r2) => r1 !== r2
     });
 
-    this.dataSource = ds.cloneWithRows(brewery);
+    this.dataSource = ds.cloneWithRows(brewery)
   }
 
   renderRow(brewery) {

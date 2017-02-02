@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import ReduxThunk from 'redux-thunk'
@@ -7,10 +7,12 @@ import reducers from './reducers'
 
 import Router from './Router'
 
-class App extends React.Component {
+const store = createStore(reducers, {}, applyMiddleware(ReduxThunk))
+
+class App extends Component {
   render() {
     return (
-      <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))}>
+      <Provider store={store} >
         <Router />
       </Provider>
     )
