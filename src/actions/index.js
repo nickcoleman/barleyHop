@@ -94,13 +94,7 @@ export const reverseGeoLocLookup = (lat = '40.732287', lon: '-111.8996689') => d
     .then(response => response.json())
     .then(data => {
       const address = data.results[0].formatted_address.split(',')
-<<<<<<< HEAD
       const location = address[len-3]
-=======
-      const len = address.length
-      const location = address[len-3]
-      // const location = data.results[0].address_components[2].long_name
->>>>>>> 3f4720e1253ee67e7941938219b2319f49529e08
       dispatch(fetchBreweryLocations(location))
     })
     .catch(error =>console.log('reverseGeoLocLookup Error: ', error))
