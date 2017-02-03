@@ -7,7 +7,7 @@
 Mobile React-Native Application.
 Allows users to search for breweries and pubs by either their geo-location or by manually entering a location.
 
-## Sample Scenescd
+## Sample Scenes
 ![Main Scene](http://res.cloudinary.com/coleman/image/upload/v1485978908/MainScreen_aucrzw.png)
 
 ![Brewery/Pub Listings](http://res.cloudinary.com/coleman/image/upload/v1485978907/PubListings_oj6rq0.png)
